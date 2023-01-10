@@ -192,7 +192,7 @@ func (srv *DefaultAccessTokenServer) getToken() (token accessTokenInfo, cached b
 		return
 	}
 
-	url := "https://qyapi.weixin.qq.com/cgi-bin/service/get_suite_token"
+	url := corp.QyApiURL + "/cgi-bin/service/get_suite_token"
 	httpResp, err := srv.httpClient.Post(url, "application/json; charset=utf-8", requestBuf)
 	if err != nil {
 		srv.tokenCache.Lock()

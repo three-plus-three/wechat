@@ -41,7 +41,7 @@ func (clt *Client) UserCreate(para *UserCreateParameters) (err error) {
 
 	var result corp.Error
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/user/create?access_token="
+	incompleteURL := corp.QyApiURL + "/cgi-bin/user/create?access_token="
 	if err = ((*corp.Client)(clt)).PostJSON(incompleteURL, para, &result); err != nil {
 		return
 	}
@@ -84,7 +84,7 @@ func (clt *Client) UserUpdate(para *UserUpdateParameters) (err error) {
 
 	var result corp.Error
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/user/update?access_token="
+	incompleteURL := corp.QyApiURL + "/cgi-bin/user/update?access_token="
 	if err = ((*corp.Client)(clt)).PostJSON(incompleteURL, para, &result); err != nil {
 		return
 	}
@@ -100,7 +100,7 @@ func (clt *Client) UserUpdate(para *UserUpdateParameters) (err error) {
 func (clt *Client) UserDelete(userId string) (err error) {
 	var result corp.Error
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/user/delete?userid=" +
+	incompleteURL := corp.QyApiURL + "/cgi-bin/user/delete?userid=" +
 		url.QueryEscape(userId) + "&access_token="
 	if err = ((*corp.Client)(clt)).GetJSON(incompleteURL, &result); err != nil {
 		return
@@ -127,7 +127,7 @@ func (clt *Client) UserBatchDelete(UserIdList []string) (err error) {
 
 	var result corp.Error
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/user/batchdelete?access_token="
+	incompleteURL := corp.QyApiURL + "/cgi-bin/user/batchdelete?access_token="
 	if err = ((*corp.Client)(clt)).PostJSON(incompleteURL, &request, &result); err != nil {
 		return
 	}
@@ -160,7 +160,7 @@ func (clt *Client) UserInfo(userId string) (info *UserInfo, err error) {
 		UserInfo
 	}
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/user/get?userid=" +
+	incompleteURL := corp.QyApiURL + "/cgi-bin/user/get?userid=" +
 		url.QueryEscape(userId) + "&access_token="
 	if err = ((*corp.Client)(clt)).GetJSON(incompleteURL, &result); err != nil {
 		return
@@ -199,7 +199,7 @@ func (clt *Client) UserSimpleList(departmentId int64,
 		fetchChildStr = "0"
 	}
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/user/simplelist" +
+	incompleteURL := corp.QyApiURL + "/cgi-bin/user/simplelist" +
 		"?department_id=" + strconv.FormatInt(departmentId, 10) +
 		"&fetch_child=" + fetchChildStr +
 		"&status=" + strconv.FormatInt(int64(status), 10) +
@@ -236,7 +236,7 @@ func (clt *Client) UserList(departmentId int64,
 		fetchChildStr = "0"
 	}
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/user/list" +
+	incompleteURL := corp.QyApiURL + "/cgi-bin/user/list" +
 		"?department_id=" + strconv.FormatInt(departmentId, 10) +
 		"&fetch_child=" + fetchChildStr +
 		"&status=" + strconv.FormatInt(int64(status), 10) +

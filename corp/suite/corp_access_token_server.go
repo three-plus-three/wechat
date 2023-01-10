@@ -148,7 +148,7 @@ func (srv *CorpAccessTokenServer) getToken() (token CorpAccessTokenInfo, cached 
 		CorpAccessTokenInfo
 	}
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/service/get_corp_token?suite_access_token="
+	incompleteURL := corp.QyApiURL + "/cgi-bin/service/get_corp_token?suite_access_token="
 	if err = srv.client.PostJSON(incompleteURL, &request, &result); err != nil {
 		srv.tokenCache.Lock()
 		srv.tokenCache.Token = ""

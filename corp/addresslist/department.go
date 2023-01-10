@@ -32,7 +32,7 @@ func (clt *Client) DepartmentCreate(para *DepartmentCreateParameters) (id int64,
 		Id int64 `json:"id"`
 	}
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/department/create?access_token="
+	incompleteURL := corp.QyApiURL + "/cgi-bin/department/create?access_token="
 	if err = ((*corp.Client)(clt)).PostJSON(incompleteURL, para, &result); err != nil {
 		return
 	}
@@ -62,7 +62,7 @@ func (clt *Client) DepartmentUpdate(para *DepartmentUpdateParameters) (err error
 
 	var result corp.Error
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/department/update?access_token="
+	incompleteURL := corp.QyApiURL + "/cgi-bin/department/update?access_token="
 	if err = ((*corp.Client)(clt)).PostJSON(incompleteURL, para, &result); err != nil {
 		return
 	}
@@ -78,7 +78,7 @@ func (clt *Client) DepartmentUpdate(para *DepartmentUpdateParameters) (err error
 func (clt *Client) DepartmentDelete(id int64) (err error) {
 	var result corp.Error
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/department/delete?id=" +
+	incompleteURL := corp.QyApiURL + "/cgi-bin/department/delete?id=" +
 		strconv.FormatInt(id, 10) + "&access_token="
 	if err = ((*corp.Client)(clt)).GetJSON(incompleteURL, &result); err != nil {
 		return
@@ -104,7 +104,7 @@ func (clt *Client) DepartmentList(rootId int64) (departments []Department, err e
 		Departments []Department `json:"department"`
 	}
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/department/list?id=" +
+	incompleteURL := corp.QyApiURL + "/cgi-bin/department/list?id=" +
 		strconv.FormatInt(rootId, 10) + "&access_token="
 	if err = ((*corp.Client)(clt)).GetJSON(incompleteURL, &result); err != nil {
 		return

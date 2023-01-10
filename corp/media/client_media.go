@@ -52,7 +52,7 @@ func (clt *Client) downloadMediaToWriter(mediaId string, writer io.Writer) (writ
 
 	hasRetried := false
 RETRY:
-	finalURL := "https://qyapi.weixin.qq.com/cgi-bin/media/get?media_id=" + url.QueryEscape(mediaId) +
+	finalURL := corp.QyApiURL + "/cgi-bin/media/get?media_id=" + url.QueryEscape(mediaId) +
 		"&access_token=" + url.QueryEscape(token)
 
 	httpResp, err := clt.HttpClient.Get(finalURL)

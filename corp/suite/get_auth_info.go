@@ -28,7 +28,7 @@ func (clt *Client) GetAuthInfo(authCorpId, permanentCode string) (info *AuthInfo
 		AuthInfoEx
 	}
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/service/get_auth_info?suite_access_token="
+	incompleteURL := corp.QyApiURL + "/cgi-bin/service/get_auth_info?suite_access_token="
 	if err = clt.PostJSON(incompleteURL, &request, &result); err != nil {
 		return
 	}

@@ -28,7 +28,7 @@ func (clt *Client) InviteSend(UserId, InviteTips string) (Type int, err error) {
 		Type int `json:"type"`
 	}
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/invite/send?access_token="
+	incompleteURL := corp.QyApiURL + "/cgi-bin/invite/send?access_token="
 	if err = ((*corp.Client)(clt)).PostJSON(incompleteURL, &request, &result); err != nil {
 		return
 	}

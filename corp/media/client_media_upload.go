@@ -108,7 +108,7 @@ func (clt *Client) uploadMediaFromReader(mediaType, filename string, reader io.R
 		MediaInfo
 	}
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/media/upload?type=" +
+	incompleteURL := corp.QyApiURL + "/cgi-bin/media/upload?type=" +
 		url.QueryEscape(mediaType) + "&access_token="
 	fields := []corp.MultipartFormField{{
 		ContentType: 0,

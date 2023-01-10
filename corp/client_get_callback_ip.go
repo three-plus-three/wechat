@@ -12,7 +12,7 @@ func (clt *Client) GetCallbackIP() (ipList []string, err error) {
 		IPList []string `json:"ip_list"`
 	}
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/getcallbackip?access_token="
+	incompleteURL := QyApiURL + "/cgi-bin/getcallbackip?access_token="
 	if err = clt.GetJSON(incompleteURL, &result); err != nil {
 		return
 	}

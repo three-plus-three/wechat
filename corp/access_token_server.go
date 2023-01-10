@@ -19,6 +19,8 @@ import (
 	"gopkg.in/chanxuehong/wechat.v1/json"
 )
 
+var QyApiURL string = "https://qyapi.weixin.qq.com"
+
 // access_token 中控服务器接口, see access_token_server.png
 type AccessTokenServer interface {
 	// 从中控服务器获取被缓存的 access_token.
@@ -158,7 +160,7 @@ func (srv *DefaultAccessTokenServer) getToken() (token accessTokenInfo, cached b
 		return
 	}
 
-	_url := "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=" + url.QueryEscape(srv.corpId) +
+	_url := QyApiURL + "/cgi-bin/gettoken?corpid=" + url.QueryEscape(srv.corpId) +
 		"&corpsecret=" + url.QueryEscape(srv.corpSecret)
 	httpResp, err := srv.httpClient.Get(_url)
 	if err != nil {

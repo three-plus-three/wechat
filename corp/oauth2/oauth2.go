@@ -49,7 +49,7 @@ func (clt *Client) UserInfo(agentId int64, code string) (info *UserInfo, err err
 		UserInfo
 	}
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?agentid=" +
+	incompleteURL := corp.QyApiURL + "/cgi-bin/user/getuserinfo?agentid=" +
 		strconv.FormatInt(agentId, 10) + "&code=" + url.QueryEscape(code) +
 		"&access_token="
 	if err = ((*corp.Client)(clt)).GetJSON(incompleteURL, &result); err != nil {

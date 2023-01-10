@@ -159,7 +159,7 @@ func (srv *DefaultAccessTokenServer) getToken() (token accessTokenInfo, cached b
 		return
 	}
 
-	_url := "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=" + url.QueryEscape(srv.corpId) +
+	_url := QyApiURL + "/cgi-bin/gettoken?corpid=" + url.QueryEscape(srv.corpId) +
 		"&corpsecret=" + url.QueryEscape(srv.corpSecret)
 	httpResp, err := srv.httpClient.Get(_url)
 	if err != nil {

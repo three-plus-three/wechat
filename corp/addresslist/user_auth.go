@@ -21,7 +21,7 @@ import (
 func (clt *Client) UserAuthSuccess(userId string) (err error) {
 	var result corp.Error
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/user/authsucc?userid=" +
+	incompleteURL := corp.QyApiURL + "/cgi-bin/user/authsucc?userid=" +
 		url.QueryEscape(userId) + "&access_token="
 	if err = ((*corp.Client)(clt)).GetJSON(incompleteURL, &result); err != nil {
 		return

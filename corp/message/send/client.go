@@ -93,7 +93,7 @@ func (clt *Client) send(msg interface{}) (r *Result, err error) {
 		Result
 	}
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token="
+	incompleteURL := corp.QyApiURL + "/cgi-bin/message/send?access_token="
 	if err = ((*corp.Client)(clt)).PostJSON(incompleteURL, msg, &result); err != nil {
 		return
 	}

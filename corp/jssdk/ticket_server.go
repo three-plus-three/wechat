@@ -152,7 +152,7 @@ func (srv *DefaultTicketServer) getTicket() (ticket ticketInfo, cached bool, err
 		ticketInfo
 	}
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/get_jsapi_ticket?access_token="
+	incompleteURL := corp.QyApiURL + "/cgi-bin/get_jsapi_ticket?access_token="
 	if err = srv.corpClient.GetJSON(incompleteURL, &result); err != nil {
 		srv.ticketCache.Lock()
 		srv.ticketCache.Ticket = ""

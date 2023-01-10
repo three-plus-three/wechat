@@ -41,7 +41,7 @@ func (clt *Client) SetAgent(authCorpId, permanentCode string, para *SetAgentPara
 
 	var result corp.Error
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/service/set_agent?suite_access_token="
+	incompleteURL := corp.QyApiURL + "/cgi-bin/service/set_agent?suite_access_token="
 	if err = clt.PostJSON(incompleteURL, &request, &result); err != nil {
 		return
 	}

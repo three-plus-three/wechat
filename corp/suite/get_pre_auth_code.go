@@ -30,7 +30,7 @@ func (clt *Client) GetPreAuthCode(appIdList []int64) (code *PreAuthCode, err err
 		PreAuthCode
 	}
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/service/get_pre_auth_code?suite_access_token="
+	incompleteURL := corp.QyApiURL + "/cgi-bin/service/get_pre_auth_code?suite_access_token="
 	if err = clt.PostJSON(incompleteURL, &request, &result); err != nil {
 		return
 	}

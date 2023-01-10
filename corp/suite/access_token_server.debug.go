@@ -194,7 +194,7 @@ func (srv *DefaultAccessTokenServer) getToken() (token accessTokenInfo, cached b
 	}
 	requestBytes := requestBuf.Bytes()
 
-	url := "https://qyapi.weixin.qq.com/cgi-bin/service/get_suite_token"
+	url := corp.QyApiURL + "/cgi-bin/service/get_suite_token"
 
 	corp.LogInfoln("[WECHAT_DEBUG] request url:", url)
 	corp.LogInfoln("[WECHAT_DEBUG] request json:", string(requestBytes))

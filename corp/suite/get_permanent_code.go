@@ -38,7 +38,7 @@ func (clt *Client) GetPermanentCode(authCode string) (info *PermanentCodeInfo, e
 		PermanentCodeInfo
 	}
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/service/get_permanent_code?suite_access_token="
+	incompleteURL := corp.QyApiURL + "/cgi-bin/service/get_permanent_code?suite_access_token="
 	if err = clt.PostJSON(incompleteURL, &request, &result); err != nil {
 		return
 	}

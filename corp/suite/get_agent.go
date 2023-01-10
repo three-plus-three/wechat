@@ -55,7 +55,7 @@ func (clt *Client) GetAgent(authCorpId, permanentCode string, agentId int64) (in
 		AgentInfo
 	}
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/service/get_agent?suite_access_token="
+	incompleteURL := corp.QyApiURL + "/cgi-bin/service/get_agent?suite_access_token="
 	if err = clt.PostJSON(incompleteURL, &request, &result); err != nil {
 		return
 	}

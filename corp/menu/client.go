@@ -22,7 +22,7 @@ func NewClient(srv corp.AccessTokenServer, clt *http.Client) *Client {
 func (clt *Client) CreateMenu(agentId int64, menu Menu) (err error) {
 	var result corp.Error
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/menu/create?agentid=" +
+	incompleteURL := corp.QyApiURL + "/cgi-bin/menu/create?agentid=" +
 		strconv.FormatInt(agentId, 10) + "&access_token="
 	if err = ((*corp.Client)(clt)).PostJSON(incompleteURL, &menu, &result); err != nil {
 		return
@@ -39,7 +39,7 @@ func (clt *Client) CreateMenu(agentId int64, menu Menu) (err error) {
 func (clt *Client) DeleteMenu(agentId int64) (err error) {
 	var result corp.Error
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/menu/delete?agentid=" +
+	incompleteURL := corp.QyApiURL + "/cgi-bin/menu/delete?agentid=" +
 		strconv.FormatInt(agentId, 10) + "&access_token="
 	if err = ((*corp.Client)(clt)).GetJSON(incompleteURL, &result); err != nil {
 		return
@@ -59,7 +59,7 @@ func (clt *Client) GetMenu(agentId int64) (menu Menu, err error) {
 		Menu Menu `json:"menu"`
 	}
 
-	incompleteURL := "https://qyapi.weixin.qq.com/cgi-bin/menu/get?agentid=" +
+	incompleteURL := corp.QyApiURL + "/cgi-bin/menu/get?agentid=" +
 		strconv.FormatInt(agentId, 10) + "&access_token="
 	if err = ((*corp.Client)(clt)).GetJSON(incompleteURL, &result); err != nil {
 		return
